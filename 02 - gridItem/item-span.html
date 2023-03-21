@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../assets/style.css">
+  <title>Sizing Grid Items!</title>
+  <style>
+    .container {
+      display: grid;
+      grid-gap: 10px;
+      grid-template-columns: repeat(5, 1fr);
+      margin-bottom:20px
+    }
+    .container1 .item5{
+      background: mistyrose;
+      grid-row: span 2;
+    }
+    .container2 .item2{
+      background: mistyrose;
+      grid-column: span 2;
+    }
+    .container3 .item5{
+      background: mistyrose;
+      grid-column: span 2;
+    }
+    .container4 .item9{
+      background: mistyrose;
+      grid-column: span 8;
+    }
+  </style>
+</head>
+
+<body>
+  <div>預設 5*2</div>
+  <div class="container">
+    <div class="item item1">1</div>
+    <div class="item item2">2</div>
+    <div class="item item3">3</div>
+    <div class="item item4">4</div>
+    <div class="item item5">5</div>
+    <div class="item item6">6</div>
+    <div class="item item7">7</div>
+    <div class="item item8">8</div>
+    <div class="item item9">9</div>
+    <div class="item item10">10</div>
+    
+  </div>
+  <div>item5 - grid-row: span 2; </div>
+  <div class="container container1">
+    <div class="item item1">1</div>
+    <div class="item item2">2</div>
+    <div class="item item3">3</div>
+    <div class="item item4">4</div>
+    <div class="item item5">5</div>
+    <div class="item item6">6</div>
+    <div class="item item7">7</div>
+    <div class="item item8">8</div>
+    <!-- <div class="item item8">💩</div> -->
+    <div class="item item9">9</div>
+    <div class="item item10">10</div>
+  </div>
+  <div>item2 - grid-column: span 2; </div>
+  <div class="container container2">
+    <div class="item item1">1</div>
+    <div class="item item2">2</div>
+    <div class="item item3">3</div>
+    <div class="item item4">4</div>
+    <div class="item item5">5</div>
+    <div class="item item6">6</div>
+    <div class="item item7">7</div>
+    <div class="item item8">8</div>
+    <div class="item item9">9</div>
+    <div class="item item10">10</div>
+  </div>
+  <div>item5 - grid-column: span 2;<br>5往下面跑是因為原本的空間不夠，放不下 </div>
+  <div class="container container3">
+    <div class="item item1">1</div>
+    <div class="item item2">2</div>
+    <div class="item item3">3</div>
+    <div class="item item4">4</div>
+    <div class="item item5">5</div>
+    <div class="item item6">6</div>
+    <div class="item item7">7</div>
+    <div class="item item8">8</div>
+    <div class="item item9">9</div>
+    <div class="item item10">10</div>
+  </div>
+  <div>item9 - grid-column: span 8;<br>
+    span格數超過原本template設定的5，會自動把template的格數擴編到8<br>
+    item6-8比較擠是因為超出了template的設定範圍。就變成原本div自己的寬度
+  </div>
+  <div class="container container4">
+    <div class="item item1">1</div>
+    <div class="item item2">2</div>
+    <div class="item item3">3</div>
+    <div class="item item4">4</div>
+    <div class="item item5">5</div>
+    <div class="item item6">6</div>
+    <div class="item item7">7</div>
+    <div class="item item8">8</div>
+    <div class="item item9">9</div>
+    <div class="item item10">10</div>
+  </div>
+
+  
+</body>
+
+</html>

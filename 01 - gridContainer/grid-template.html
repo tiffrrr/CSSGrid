@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../assets/style.css">
+  <title>CSS Grid Fundamentals!</title>
+  <style>
+    .container{
+      border: 5px solid gray;
+      display: grid;
+      grid-gap: 12px;
+      margin-bottom: 20px;
+    }
+    /* px */
+    .container1{
+      grid-template-columns:repeat(5,50px);
+    }
+    .container1 .item7{
+      width: 20px;
+      background-color: rosybrown;
+    }
+    .container1 .item9{
+      width: 120px;
+      background-color: burlywood;
+    }
+
+    /* % */
+    .container2{
+      grid-template-columns:repeat(5,20%);
+    }
+
+
+    /* auto */
+    .container3{
+      grid-template-columns:repeat(4,1fr) auto;
+    }
+    .container4{
+      grid-template-columns:repeat(4,105px) auto;
+    }
+    .container5{
+      grid-template-columns:repeat(4,40px) auto;
+    }
+    .container3 .item5,.container4 .item5,.container5 .item5{
+      background-color: rosybrown;
+    }
+    .container3 .item10,.container4 .item10,.container5 .item10{
+      background-color: rosybrown;
+    }
+
+    /* fr */
+    .container6{
+      grid-template-columns:repeat(5,1fr);
+    }
+    .container6 .item7{
+      width: 30px;
+      background-color: rosybrown;
+    }
+    .container6 .item9{
+      width: 250px;
+      background-color: rosybrown;
+    }
+    
+  </style>
+</head>
+
+<body>
+  <!-- .item.item${$}*10 -->
+  <div>template設定px，item設定其它寬度</div>
+  <div class="container container1">
+    <div class="item item1">1</div>
+    <div class="item item2">2</div>
+    <div class="item item3">3</div>
+    <div class="item item4">4</div>
+    <div class="item item5">5</div>
+    <div class="item item6">6</div>
+    <div class="item item7">7</div>
+    <div class="item item8">8</div>
+    <div class="item item9">9</div>
+    <div class="item item10">10</div>
+  </div>
+  <div> template設定5*20%，gap 12px</div>
+  <div class="container container2">
+    <div class="item item1">1</div>
+    <div class="item item2">2</div>
+    <div class="item item3">3</div>
+    <div class="item item4">4</div>
+    <div class="item item5">5</div>
+    <div class="item item6">6</div>
+    <div class="item item7">7</div>
+    <div class="item item8">8</div>
+    <div class="item item9">9</div>
+    <div class="item item10">10</div>
+  </div>
+  <div> grid-template-columns:repeat(4,1fr) auto;<br>5、10特別小是因為沒有多餘寬度，只剩div自身寬度</div>
+  <div class="container container3">
+    <div class="item item1">1</div>
+    <div class="item item2">2</div>
+    <div class="item item3">3</div>
+    <div class="item item4">4</div>
+    <div class="item item5">5</div>
+    <div class="item item6">6</div>
+    <div class="item item7">7</div>
+    <div class="item item8">8</div>
+    <div class="item item9">9</div>
+    <div class="item item10">10</div>
+  </div>
+  <div> grid-template-columns:repeat(4,105px) auto;<br>5、10最小為div自身寬度。寬度不夠就跑版</div>
+
+  <div class="container container4">
+    <div class="item item1">1</div>
+    <div class="item item2">2</div>
+    <div class="item item3">3</div>
+    <div class="item item4">4</div>
+    <div class="item item5">5</div>
+    <div class="item item6">6</div>
+    <div class="item item7">7</div>
+    <div class="item item8">8</div>
+    <div class="item item9">9</div>
+    <div class="item item10">1000000000000</div>
+  </div>
+  <div> grid-template-columns:repeat(4,40px) auto;<br>有剩餘寬度時5、10會撐滿剩餘寬度</div>
+  <div class="container container5">
+    <div class="item item1">1</div>
+    <div class="item item2">2</div>
+    <div class="item item3">3</div>
+    <div class="item item4">4</div>
+    <div class="item item5">5</div>
+    <div class="item item6">6</div>
+    <div class="item item7">7</div>
+    <div class="item item8">8</div>
+    <div class="item item9">9</div>
+    <div class="item item10">10</div>
+  </div>
+  <div> grid-template-columns:repeat(5,1fr) 
+    <br>4、9特別長因為9有設定寬度250px，優先吃寬度，剩下的空間其它item再去分配
+    <br>7特別短因為有設寬度30px。但分配下來的1fr > 30px，所以還是會留1fr的空
+  </div>
+
+  <div class="container container6">
+    <div class="item item1">1</div>
+    <div class="item item2">2</div>
+    <div class="item item3">3</div>
+    <div class="item item4">4</div>
+    <div class="item item5">5</div>
+    <div class="item item6">6</div>
+    <div class="item item7">7</div>
+    <div class="item item8">8</div>
+    <div class="item item9">9</div>
+    <div class="item item10">10</div>
+  </div>
+  <div class="container container7"></div>
+  <div class="container container8"></div>
+  <div class="container container9"></div>
+  <div class="container container10"></div>
+</body>
+
+</html>

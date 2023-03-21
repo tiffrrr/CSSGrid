@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../assets/style.css">
+  <title>auto-fit and auto-fill!</title>
+</head>
+
+<body>
+  <h1>auto-fill</h1>
+  <div>
+    grid-template-columns: repeat(auto-fill, 200px);
+    <br>
+    個數很多時，放得下就同一行，放不下折行。自動決定一行有幾個。而非寫死個數
+    <br>
+    (auto-fill/auto-fit效果相同)
+    <br>
+  </div>
+  <div class="container container1">
+    <div class="item item1">Item 01</div>
+    <div class="item item2">Item 02</div>
+    <div class="item item3">Item 03</div>
+    <div class="item item4">item 04</div>
+    <div class="item item5">Item 05</div>
+    <div class="item item6">Item 06</div>
+    <div class="item item7">Item 07</div>
+    <div class="item item8">Item 08</div>
+    <div class="item item9">Item 09</div>
+    <div class="item item10">Item 10</div>
+  </div>
+
+  <div>
+    個數很少時，grid的格線包含整個container。
+    <br>
+    item04:grid-column-end: -1;
+    <br>
+    設定在最後一格，會跑到最右邊
+  </div>
+  <div class="container container2">
+    <div class="item item1">Item 01</div>
+    <div class="item item2">Item 02</div>
+    <div class="item item3">Item 03</div>
+    <div class="item item4">Item 04</div>
+  </div>
+  <hr>
+  <h1>auto-fit</h1>
+
+  <div>
+    grid-template-columns: repeat(auto-fit, 200px);
+    <br>
+    放得下就同一行，放不下折行。自動決定一行有幾個。而非寫死個數
+    <br>
+    (auto-fill/auto-fit效果相同)
+  </div>
+  <div class="container container3">
+    <div class="item item1">Item 01</div>
+    <div class="item item2">Item 02</div>
+    <div class="item item3">Item 03</div>
+    <div class="item item4">item 04</div>
+    <div class="item item5">Item 05</div>
+    <div class="item item6">Item 06</div>
+    <div class="item item7">Item 07</div>
+    <div class="item item8">Item 08</div>
+    <div class="item item9">Item 09</div>
+    <div class="item item10">Item 10</div>
+  </div>
+  <div>
+    個數很少時，grid的格線會直接結束在最後一個item。剩餘空間不會算進grid範圍。
+    <br>
+    item04:grid-column-end: -1;
+    <br>
+    設定在最後一格，會原地不同
+  </div>
+  <div class="container container4">
+    <div class="item item1">Item 01</div>
+    <div class="item item2">Item 02</div>
+    <div class="item item3">Item 03</div>
+    <div class="item item4">Item 04</div>
+  </div>
+  <h1>minmax()</h1>
+  <div>grid-template-columns: repeat(auto-fill, minmax(100px,1fr));</div>
+  <br>
+  <br>
+
+  <div>
+    minmax - auto fill
+    <br>
+    因為auto fill grid 的格線包括整個container，所以父層寬 / item 寬後，能擺幾個item，就會有幾格。
+    <br>
+    假設item最小寬100px，父層寬800px，grid總共會有八格，所以1fr就會只有100px。就不會填滿父層
+  </div>
+  <div class="container container5">
+    <div class="item item1">Item 01</div>
+    <div class="item item2">Item 02</div>
+    <div class="item item3">Item 03</div>
+    <div class="item item4">Item 04</div>
+  </div>
+  <div>
+    minmax - auto fit
+    <br>
+    使用auto-fit 就會填滿剩餘空間。擺不下的話就會這行。
+  </div>
+  <div class="container container6">
+    <div class="item item1">Item 01</div>
+    <div class="item item2">Item 02</div>
+    <div class="item item3">Item 03</div>
+    <div class="item item4">Item 04</div>
+  </div>
+
+  <style>
+    .container {
+      display: grid;
+      grid-gap: 20px;
+      border: 5px solid var(--yellow);
+      margin-bottom: 40px;
+    }
+
+    
+    /* auto fill */
+    .container1{
+      grid-template-columns: repeat(auto-fill, 100px);
+    }
+    
+    .container2{
+      grid-template-columns: repeat(auto-fill, 100px);
+    }
+    .container2 .item4 {
+      grid-column-end: -1;
+    }
+
+
+
+    /* auto fit */
+    .container3{
+      grid-template-columns: repeat(auto-fit, 100px);
+    }
+
+    .container4{
+      grid-template-columns: repeat(auto-fit, 100px);
+    }
+    .container4 .item4 {
+      grid-column-end: -1;
+    }
+    /* min max */
+    .container5{
+      grid-template-columns: repeat(auto-fill, minmax(100px,1fr));
+
+    }
+    .container6{
+      grid-template-columns: repeat(auto-fit, minmax(100px,1fr));
+
+    }
+  </style>
+</body>
+
+</html>
